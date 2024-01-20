@@ -1,3 +1,11 @@
+# Xmake cache
+.xmake/
+build/
+
+# MacOS Cache
+.DS_Store
+
+
 # Prerequisites
 *.d
 
@@ -55,5 +63,3 @@ dkms.conf
 # Visual Studio Code
 .vscode/
 
-# macOS
-.DS_Store

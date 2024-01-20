@@ -1,6 +1,11 @@
 #include <stdio.h>
+// #include <unistd.h>
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+    #include <Windows.h>
+    #include <utilapiset.h>
+    #define SDL_MAIN_HANDLED
+#endif
 #include <SDL2/SDL.h>
-#include <unistd.h>
 #include "beep.h"
 #include "chip8.h"
 
