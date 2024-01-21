@@ -4,7 +4,7 @@ FLASG= -g
 
 OBJECTS= ./build/chip8memory.o ./build/chip8stack.o ./build/chip8keyboard.o ./build/chip8.o ./build/chip8screen.o
 all: ${OBJECTS}
-	clang ${FLASG} ${INCLUDES} ${FRAMEWORKS} ./src/main.c ${OBJECTS} -o ./bin/main
+	clang ${FLASG} ${INCLUDES} ${FRAMEWORKS} ./src/main.c ${OBJECTS} -o ./bin/Chip-8
 
 ./build/chip8memory.o: ./src/chip8memory.c
 	clang ${FLASG} ${INCLUDES} ./src/chip8memory.c  -c -o ./build/chip8memory.o
@@ -22,4 +22,5 @@ all: ${OBJECTS}
 	clang ${FLASG} ${INCLUDES} ./src/chip8screen.c  -c -o ./build/chip8screen.o
 
 clean:
-	rm build/*
+	rm -rf build/*
+	rm -rf bin/*

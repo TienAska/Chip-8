@@ -4,8 +4,13 @@ target("Chip-8")
     set_kind("binary")
     add_files("src/*.c")
     add_includedirs("include")
-    add_links("SDL2")
-    add_linkdirs("libraries")
+    if is_plat("macosx") then
+        add_frameworks("SDL2", "AudioUnit")
+        add_frameworkdirs("/Library/Frameworks")
+    else
+        add_links("SDL2")
+        add_linkdirs("libraries")
+    end
     add_cflags("-g")
     set_objectdir("build")
     set_targetdir("bin")
