@@ -6,7 +6,7 @@
 #else
     #include <unistd.h>
 #endif
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "beep.h"
 #include "chip8.h"
 

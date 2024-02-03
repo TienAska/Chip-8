@@ -1,4 +1,17 @@
 add_rules("mode.debug", "mode.release")
+add_requires("SDL2")
+
+package("SDL2")
+    if is_plat("windows") then
+        set_urls("https://www.libsdl.org/release/SDL2-devel-$(version)-VC.zip")
+  	add_versions("2.30.0", "6413358b67f19b5398e902c576518d5350394a863eb53eb27bb9a81e75a36958")
+    end
+
+    on_install("windows", function(package)
+       os.cp("include", package:installdir())
+       os.cp("lib/$(arch)/*.lib", package:installdir("lib"))
+       os.cp("lib/$(arch)/*.dll", package:installdir("lib"))
+    end)
 
 target("Chip-8")
     set_kind("binary")
@@ -8,8 +21,7 @@ target("Chip-8")
         add_frameworks("SDL2", "AudioUnit")
         add_frameworkdirs("/Library/Frameworks")
     else
-        add_links("SDL2")
-        add_linkdirs("libraries")
+	add_packages("SDL2")
     end
     add_cflags("-g")
     set_objectdir("build")
